@@ -8,6 +8,19 @@ View Russia's equipment losses (approved by Oryx) in Terminal
 go run oryxtuiviewer.go
 ```
 
+or
+
+```
+docker build --tag oryxtuiviewer .
+docker run -ti oryxtuiviewer
+```
+
+or
+
+```
+docker pull prot0s/oryxtuiviewer:v0.0.1
+```
+
 ## Acknowledgments
 
 Inspiration, code snippets, etc.
