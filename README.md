@@ -2,6 +2,8 @@
 
 View Russia's equipment losses (approved by Oryx) in Terminal
 
+![oryxlogo](https://1.bp.blogspot.com/-HLfgaUHRLnc/XwNGwWwCQYI/AAAAAAAAN5g/Uh4v-kIdiWoEuTZgIs6TUabEYBEzGswDgCK4BGAYYCw/s1600/23.png)
+
 ### Executing
 
 ```
@@ -28,4 +30,4 @@ Inspiration, code snippets, etc.
 * [goquery](https://github.com/PuerkitoBio/goquery) for scrape https://www.oryxspioenkop.com/
 
 # Preview:
-![alt text](https://user-images.githubusercontent.com/79843027/211197151-29432ba8-3673-49e5-bce7-129e2e39898c.png)
+![preview](https://user-images.githubusercontent.com/79843027/211197151-29432ba8-3673-49e5-bce7-129e2e39898c.png)
