@@ -1,0 +1,53 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.18
+
+      - name: Install git-version
+        run: go get -u github.com/sarifsystems/git-version
+
+      - name: Calculate the next version
+        id: version
+        run: |
+          version=$(git version show)
+          echo "::set-output name=version::$version"
+        continue-on-error: true
+
+      - name: Build Go application
+        run: go build -o oryxtuiviewer -ldflags "-X main.version=${{ steps.version.outputs.version }}" ./
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create Semver Tag
+        run: |
+          tag="${{ steps.version.outputs.version }}"
+          git tag "$tag"
+          git push origin "$tag"
+        continue-on-error: true
+
+      - name: Create Release
+        id: create-release
+        uses: actions/create-release@v1
+        with:
+          files: myapp
+          release_name: Release ${{ steps.version.outputs.version }}
+          tag_name: ${{ steps.version.outputs.version }}
+          token: ${{ secrets.GH_TOKEN }}
